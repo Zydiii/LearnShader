@@ -1,14 +1,15 @@
 #include "ofApp.h"
 
-ofMesh triangle;
+
 //--------------------------------------------------------------
 void ofApp::setup(){
 	// 构造 ofApp 对象时将会调用此方法
 	// 用于加载对象或创建对象，用于渲染应用程序的第一帧
 	// 首先需要创建网格
-	triangle.addVertex(glm::vec3(0.0, 0.0, 0.0));
-	triangle.addVertex(glm::vec3(0.0, 768.0f, 0.0));
-	triangle.addVertex(glm::vec3(1024.0, 768.0, 0.0));
+	triangle.addVertex(glm::vec3(-1.0f, 1.0f, 0.0f));
+	triangle.addVertex(glm::vec3(-1.0f, -1.0f, 0.0f));
+	triangle.addVertex(glm::vec3(1.0f, -1.0f, 0.0));
+	shader.load("first_vertex.vert", "first_fragment.frag");
 }
 
 //--------------------------------------------------------------
@@ -18,14 +19,16 @@ void ofApp::update(){
 
 //--------------------------------------------------------------
 void ofApp::draw(){
+	shader.begin();
 	// 每帧调用一次
 	triangle.draw();
+	shader.end();
 }
 
 //--------------------------------------------------------------
 void ofApp::keyPressed(int key){
 	glm::vec3 curPos = triangle.getVertex(2);
-	triangle.setVertex(2, curPos + glm::vec3(-10, 0, 0));
+	triangle.setVertex(2, curPos + glm::vec3(-0.01, 0, 0));
 }
 
 //--------------------------------------------------------------
