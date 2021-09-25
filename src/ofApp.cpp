@@ -10,9 +10,9 @@ void ofApp::setup(){
 	triangle.addVertex(glm::vec3(-1.0f, -1.0f, 0.0f));
 	triangle.addVertex(glm::vec3(1.0f, -1.0f, 0.0));
 
-	triangle.addColor(ofFloatColor(1.0f, 0.0f, 0.0f, 1.0f));
-	triangle.addColor(ofFloatColor(0.0, 1.0f, 0.0f, 1.0f));
-	triangle.addColor(ofFloatColor(0.0f, 0.0f, 1.0f, 1.0f));
+	//triangle.addColor(ofFloatColor(1.0f, 0.0f, 0.0f, 1.0f));
+	//triangle.addColor(ofFloatColor(0.0, 1.0f, 0.0f, 1.0f));
+	//triangle.addColor(ofFloatColor(0.0f, 0.0f, 1.0f, 1.0f));
 
 	shader.load("first_vertex.vert", "first_fragment.frag");
 }
@@ -25,6 +25,7 @@ void ofApp::update(){
 //--------------------------------------------------------------
 void ofApp::draw(){
 	shader.begin();
+	shader.setUniform4f("fragColor", glm::vec4(0, 1, 1, 1));
 	// 每帧调用一次
 	triangle.draw();
 	shader.end();
