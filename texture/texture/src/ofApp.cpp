@@ -2,7 +2,20 @@
 
 //--------------------------------------------------------------
 void ofApp::setup(){
+	quad.addVertex(glm::vec3(-1, -1, 0));
+	quad.addVertex(glm::vec3(-1, 1, 0));
+	quad.addVertex(glm::vec3(1, 1, 0));
+	quad.addVertex(glm::vec3(1, -1, 0));
 
+	quad.addColor(ofDefaultColorType(1, 0, 0, 1));
+	quad.addColor(ofDefaultColorType(0, 1, 0, 1));
+	quad.addColor(ofDefaultColorType(0, 0, 1, 1));
+	quad.addColor(ofDefaultColorType(1, 1, 1, 1));
+
+	ofIndexType indices[6] = { 0, 1, 2, 2, 3, 0 };
+	quad.addIndices(indices, 6);
+
+	shader.load("first_vertex.vert", "first_fragment.frag");
 }
 
 //--------------------------------------------------------------
@@ -12,7 +25,9 @@ void ofApp::update(){
 
 //--------------------------------------------------------------
 void ofApp::draw(){
-
+	shader.begin();
+	quad.draw();
+	shader.end();
 }
 
 //--------------------------------------------------------------
