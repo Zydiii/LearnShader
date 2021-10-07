@@ -12,4 +12,5 @@ int main() {
 	printf("%s\n", glGetString(GL_VERSION));
 	ofRunApp(new ofApp());
 
+
 }
