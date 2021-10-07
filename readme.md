@@ -2,4 +2,4 @@
 
 ## Walking Alien
 
-![](results/walking aline.gif)
+![](./results/walking_alien.gif)
